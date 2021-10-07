@@ -12,6 +12,6 @@ public class PersonController {
 
     @GetMapping
     public String getBook(){
-        return "TESTE API EXECUTADO COM SUCESSO!";
+        return "TESTE 2 API EXECUTADO COM SUCESSO!";
     }
 }
