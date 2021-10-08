@@ -1,21 +1,21 @@
-package one.digitalinnovation.personapi.controller;
+package wagner.personapi.controller;
 
 
-import one.digitalinnovation.personapi.dto.response.MessageResponseDTO;
-import one.digitalinnovation.personapi.entity.Person;
-import one.digitalinnovation.personapi.repository.PersonRepository;
+import wagner.personapi.dto.response.MessageResponseDTO;
+import wagner.personapi.entity.Person;
+import wagner.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/people")
 
-public class PersonController {
+public class PersonControllerV1 {
 
     private PersonRepository personRepository;
 
     @Autowired
-    public PersonController(PersonRepository personRepository){
+    public PersonControllerV1(PersonRepository personRepository){
         this.personRepository = personRepository;
     }
 

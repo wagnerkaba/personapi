@@ -1,6 +1,6 @@
-package one.digitalinnovation.personapi.controller;
+package wagner.personapi.controller;
 
-import one.digitalinnovation.personapi.entity.PersonTest;
+import wagner.personapi.entity.PersonTest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
