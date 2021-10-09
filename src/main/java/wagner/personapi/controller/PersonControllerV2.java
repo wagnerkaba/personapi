@@ -4,10 +4,13 @@ package wagner.personapi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import wagner.personapi.dto.request.PersonDTO;
 import wagner.personapi.dto.response.MessageResponseDTO;
 import wagner.personapi.entity.Person;
 import wagner.personapi.repository.PersonRepository;
 import wagner.personapi.service.PersonService;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v2/people")
@@ -24,7 +27,7 @@ public class PersonControllerV2 {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson(@RequestBody Person person){
-        return personService.createPerson(person);
+    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO){
+        return personService.createPerson(personDTO);
     }
 }
