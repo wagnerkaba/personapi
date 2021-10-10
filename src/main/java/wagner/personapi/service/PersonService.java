@@ -10,6 +10,9 @@ import wagner.personapi.entity.Person;
 import wagner.personapi.mapper.PersonMapper;
 import wagner.personapi.repository.PersonRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 
@@ -34,4 +37,13 @@ public class PersonService {
                 .build();
     }
 
+    public List<PersonDTO> listAll() {
+        List<Person> allPeople = personRepository.findAll();
+
+        return allPeople.stream()
+                .map(personMapper::toDTO)
+                .collect(Collectors.toList());
+
+
+    }
 }

@@ -11,6 +11,7 @@ import wagner.personapi.repository.PersonRepository;
 import wagner.personapi.service.PersonService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/people")
@@ -30,4 +31,11 @@ public class PersonControllerV2 {
     public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO){
         return personService.createPerson(personDTO);
     }
+
+    @GetMapping
+    public List<PersonDTO> listAll(){
+        return personService.listAll();
+    }
+
+
 }
