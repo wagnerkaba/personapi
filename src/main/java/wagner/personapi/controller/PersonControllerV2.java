@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import wagner.personapi.dto.request.PersonDTO;
 import wagner.personapi.dto.response.MessageResponseDTO;
 import wagner.personapi.entity.Person;
+import wagner.personapi.exception.PersonNotFoundException;
 import wagner.personapi.repository.PersonRepository;
 import wagner.personapi.service.PersonService;
 
@@ -35,7 +36,13 @@ public class PersonControllerV2 {
     @GetMapping
     public List<PersonDTO> listAll(){
         return personService.listAll();
+
+
     }
 
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
+    }
 
 }

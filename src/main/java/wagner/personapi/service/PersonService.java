@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import wagner.personapi.dto.request.PersonDTO;
 import wagner.personapi.dto.response.MessageResponseDTO;
 import wagner.personapi.entity.Person;
+import wagner.personapi.exception.PersonNotFoundException;
 import wagner.personapi.mapper.PersonMapper;
 import wagner.personapi.repository.PersonRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,6 +45,24 @@ public class PersonService {
         return allPeople.stream()
                 .map(personMapper::toDTO)
                 .collect(Collectors.toList());
+
+
+    }
+
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+
+//        Optional<Person> byId = personRepository.findById(id);
+//        if (byId.isEmpty()){
+//            throw new PersonNotFoundException(id);
+//        }
+//        return personMapper.toDTO(byId.get());
+
+
+        // Este é o mesmo código acima, mas refatorado
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
+
+        return personMapper.toDTO(person);
 
 
     }
