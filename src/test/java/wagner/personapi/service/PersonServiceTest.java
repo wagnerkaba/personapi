@@ -37,7 +37,7 @@ public class PersonServiceTest {
         PersonDTO personDTO = createFakeDTO(); //import static PersonUtils
         Person expectedSavedPerson = createFakeEntity(); //import static PersonUtils
 
-        Mockito.when(personMapper.toModel(personDTO)).thenReturn(expectedSavedPerson);
+        //Mockito.when(personMapper.toModel(personDTO)).thenReturn(expectedSavedPerson);
         Mockito.when(personRepository.save(any(Person.class))).thenReturn(expectedSavedPerson);
 
         MessageResponseDTO expectedSuccessMessage = createExpectedSuccessMessage(expectedSavedPerson.getId());
@@ -48,7 +48,7 @@ public class PersonServiceTest {
     }
     private MessageResponseDTO createExpectedSuccessMessage(Long savedPersonId){
         return MessageResponseDTO.builder()
-                .mensagem("Person successfully created with id" + savedPersonId)
+                .mensagem("Created person with ID: " + savedPersonId)
                 .build();
     }
 
