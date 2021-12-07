@@ -2,13 +2,19 @@
 
 
 
-**Documentação:**
+## Documentação
 https://wpersonapi.herokuapp.com/swagger-ui.html
 
-**Tecnologias utilizadas:**
+
+## Actuator Health
+https://wpersonapi.herokuapp.com/actuator/health
+
+## Tecnologias utilizadas
 
 * Java 11
 * Swagger
 * Spring Boot
 * Lombok
 * H2 Database
+* Spring Data JPA
+* Spring Boot Actuator
