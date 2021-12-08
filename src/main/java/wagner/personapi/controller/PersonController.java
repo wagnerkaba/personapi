@@ -16,9 +16,9 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v2/people")
+@RequestMapping("/api/v1/people")
 @AllArgsConstructor(onConstructor =  @__(@Autowired))
-public class PersonControllerV2 {
+public class PersonController {
 
     private PersonService personService;
 
