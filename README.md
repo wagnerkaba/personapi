@@ -23,3 +23,4 @@ https://wpersonapi.herokuapp.com/actuator/health
 * H2 Database
 * Spring Data JPA
 * Spring Boot Actuator
+* Hibernate validator
