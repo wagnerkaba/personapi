@@ -16,6 +16,8 @@ import wagner.personapi.mapper.PersonMapper;
 import wagner.personapi.repository.PersonRepository;
 import wagner.personapi.utils.PersonUtils;
 
+import java.util.List;
+
 import static wagner.personapi.utils.PersonUtils.*;
 import static org.mockito.Mockito.any;
 
@@ -33,11 +35,11 @@ public class PersonServiceTest {
     private PersonService personService;
 
     @Test
-    void testGivenPersonDTOThenReturnSavedMessage() {
-        PersonDTO personDTO = createFakeDTO(); //import static PersonUtils
-        Person expectedSavedPerson = createFakeEntity(); //import static PersonUtils
+    void shouldCreatePerson() {
+        PersonDTO personDTO = createFakeDTO(); //método static da classe PersonUtils
+        Person expectedSavedPerson = createFakeEntity(); //método static da classe PersonUtils
 
-        //Mockito.when(personMapper.toModel(personDTO)).thenReturn(expectedSavedPerson);
+
         Mockito.when(personRepository.save(any(Person.class))).thenReturn(expectedSavedPerson);
 
         MessageResponseDTO expectedSuccessMessage = createExpectedSuccessMessage(expectedSavedPerson.getId());
@@ -46,6 +48,20 @@ public class PersonServiceTest {
 
         Assertions.assertEquals(expectedSuccessMessage, successMessage);
     }
+
+    @Test
+    void shouldListAll(){
+        List<Person> fakePersonList = createFakePersonList();
+        List<PersonDTO> fakePersonDTOList = createFakePersonDTOList();
+        Mockito.when(personRepository.findAll()).thenReturn(fakePersonList);
+
+        List<PersonDTO> listAllSuccess = personService.listAll();
+        Assertions.assertEquals(listAllSuccess, fakePersonDTOList);
+
+
+    }
+
+
     private MessageResponseDTO createExpectedSuccessMessage(Long savedPersonId){
         return MessageResponseDTO.builder()
                 .mensagem("Created person with ID: " + savedPersonId)
