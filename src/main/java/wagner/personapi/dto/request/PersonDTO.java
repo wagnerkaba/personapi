@@ -27,7 +27,7 @@ public class PersonDTO {
     private String lastName;
 
     @NotEmpty
-    @CPF
+    @CPF(message = "CPF INVÁLIDO")
     private String cpf;
 
     private String birthDate;
